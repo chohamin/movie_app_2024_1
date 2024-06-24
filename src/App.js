@@ -1,53 +1,56 @@
 import React from 'react';
+import axios from 'axios';
+import Movie from './Movie';
+import '/App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('hello');
-  }
   
   state = {
-    count: 0,
+    isloading: true,
+    movies: []
   };
 
   componentDidMount() {
-    console.log("component rendered");
+    // 영화 데이터 로딩!
+    this.getMovies();
   }
-
-  componentDidUpdate() {
-    console.log("I just updated");
+  getMovies = async () => {
+    const {
+      data : {
+        data : { movies }
+      }
+    } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
+    this.setState({ movies, isloading: false });
   }
-
-  componentWillUnmount() {
-    console.log("Goodbye, cruel world");
-  }
-
-  add = () => {
-    // console.log("add");
-    // this.setState({ count: this.state.count + 1 });
-    this.setState(current => ({
-      count: current.count + 1,
-    }));
-  };
-
-  minus = () => {
-    // console.log("minus");
-    // this.setState({ count: this.state.count - 1 });
-    this.setState(current => ({
-      count: current.count - 1,
-    }));
-  };
 
   render() {
-    console.log("I'm rendering");
+    const { isloading, movies } = this.state;
     return (
-      <div>
-        <h1>The number is: {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
+      <section class="container">
+        { isloading ? (
+          <div class="loader">
+            <span class="loader_text">'loading...'</span>
+          </div>
+        ) :(
+          <div class='movie'>
+          {movies.map(movie => (
+            <Movie
+              id={movie.id}
+              year={movie.year}
+              title={movie.title}
+              summary={movie.summary}
+              poster={movie.medium_cover_image}
+            />
+        ))}
+        </div>
+      )}
+      </section>
     );
+   }
   }
-}
+
 
 export default App;
+
+
+
