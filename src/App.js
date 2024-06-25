@@ -33,7 +33,7 @@ class App extends React.Component {
           </div>
         ) :(
           <div class='movies'>
-          {movies.map((movie => (
+          {movies.map(movie => (
             <Movie
               id={movie.id}
               year={movie.year}
@@ -41,7 +41,7 @@ class App extends React.Component {
               summary={movie.summary}
               poster={movie.medium_cover_image}
             />
-        )))}
+        ))}
         </div>
       )}
       </section>
