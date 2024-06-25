@@ -1,0 +1,25 @@
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from 'react-router-dom';
+
+function Detail() {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (location.state == null) {
+            return navigate('/');
+        }
+    }, [])
+
+    if (location.state) {
+        return <span>{location.state.title}</span>;
+    } else {
+        return null;
+    }
+}
+// function Detail(props) {
+//     console.log(props);
+    // return <span>{location.state.title}</span>;
+
+
+export default Detail;
