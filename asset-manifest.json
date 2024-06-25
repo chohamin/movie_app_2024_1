@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/chohamin/movie_app_2024_1/static/css/main.f6e3fe2b.css",
+    "main.js": "/chohamin/movie_app_2024_1/static/js/main.19c600f0.js",
+    "index.html": "/chohamin/movie_app_2024_1/index.html",
+    "main.f6e3fe2b.css.map": "/chohamin/movie_app_2024_1/static/css/main.f6e3fe2b.css.map",
+    "main.19c600f0.js.map": "/chohamin/movie_app_2024_1/static/js/main.19c600f0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6e3fe2b.css",
+    "static/js/main.19c600f0.js"
+  ]
+}
